@@ -51,5 +51,11 @@ int main() {
         fillFlightInfo(&flightInfo[i], destination, date);
     }
 
+    printFlightInfo(flightInfo);
+
+
+    free(flightInfo->destination);
+    free(flightInfo->date);
+
     return 0;
 }
