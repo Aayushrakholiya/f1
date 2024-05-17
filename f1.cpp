@@ -75,7 +75,15 @@ int main() {
 void fillFlightInfo(FlightInfo* flightInfo, char* destination, char* date) {
 
     flightInfo->destination = (char*)malloc((strlen(destination) + 1) * sizeof(char));
+    if (flightInfo->destination == NULL) {
+        printf("Out of memory.\n");
+        exit(1);
+    }
     flightInfo->date = (char*)malloc((strlen(date) + 1) * sizeof(char));
+    if (flightInfo->date == NULL) {
+        printf("Out of memory.\n");
+        exit(1);
+    }
 
     strcpy(flightInfo->destination, destination);
     strcpy(flightInfo->date, date);
