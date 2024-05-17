@@ -33,3 +33,23 @@ void printFlightInfo(FlightInfo* flightInfo) {
         printf("%-35s%-35s\n", flightInfo[i].destination, flightInfo[i].date);
     }
 }
+int main() {
+    FlightInfo flightInfo[10];
+
+    for (int i = 0; i < 10; i++) {
+        char destination[30] = { 0 };
+        char date[30] = { 0 };
+
+        printf("Enter name of destination %d: ", i + 1);
+        fgets(destination, sizeof(destination), stdin);
+        destination[strcspn(destination, "\n")] = '\0';
+
+        printf("Enter date of flight %d: ", i + 1);
+        fgets(date, sizeof(date), stdin);
+        date[strcspn(date, "\n")] = '\0';
+
+        fillFlightInfo(&flightInfo[i], destination, date);
+    }
+
+    return 0;
+}
