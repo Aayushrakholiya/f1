@@ -23,14 +23,14 @@ typedef struct {
 
 
 // prototypes
-void fillFlightInfo(FlightInfo* flightInfo, char* destination, char* date);
-void printFlightInfo(FlightInfo* flightInfo);
+void fillFlightInfo(FlightInfo* flightArray, char* destination, char* date);
+void printFlightInfo(FlightInfo* flightArray);
 
 
 int main() {
 
     // 10 size array of FlightInfo struct
-    FlightInfo flightInfo[10];
+    FlightInfo flightArray[10];
 
     // for loop to get destination & date information from user
     for (int i = 0; i < 10; i++) {
@@ -46,15 +46,15 @@ int main() {
         date[strcspn(date, "\n")] = '\0';
 
         // call the function to fill the struct with user input
-        fillFlightInfo(&flightInfo[i], destination, date);
+        fillFlightInfo(&flightArray[i], destination, date);
     }
 
     // call the function to print the flight data get from user
-    printFlightInfo(flightInfo);
+    printFlightInfo(flightArray);
 
     //free the data which is allocated
-    free(flightInfo->destination);
-    free(flightInfo->date);
+    free(flightArray->destination);
+    free(flightArray->date);
 
     return 0;
 }
@@ -65,9 +65,9 @@ int main() {
 // This function allocates memory for the destination
 // and date.
 // PARAMETERS :
-// FlightInfo* flightInfo : it is a pointer to a struct where data will be stored.
-// char* destination : it is a string representing destination.
-// char* date : it is a string representing date.
+// FlightInfo* flightArray : it is a pointer to a struct where data will be stored.
+// char* destination       : it is a string representing destination.
+// char* date              : it is a string representing date.
 // RETURNS :
 // void
 //
@@ -87,13 +87,13 @@ void fillFlightInfo(FlightInfo* flightInfo, char* destination, char* date) {
 // This function loop through array of struct and 
 // print all the data
 // PARAMETERS :
-// FlightInfo* flightInfo : it is a pointer to an array of struct which contain all data
+// FlightInfo* flightArray : it is a pointer to an array of struct which contain all data
 // RETURNS :
 // void
 //
 
-void printFlightInfo(FlightInfo* flightInfo) {
+void printFlightInfo(FlightInfo* flightArray) {
     for (int i = 0; i < 10; i++) {
-        printf("%-35s%-35s\n", flightInfo[i].destination, flightInfo[i].date);
+        printf("%-35s%-35s\n", flightArray[i].destination, flightArray[i].date);
     }
 }
